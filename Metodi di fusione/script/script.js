@@ -1,0 +1,103 @@
+let array1 = creaArray();
+let array2 = creaArray();
+let array3 = creaArray();
+
+//Funzione per creare gli array
+function creaArray() {
+    let array = [];
+    for (let i = 0; i < 20; i++) {
+        array[i] = Math.floor(Math.random() * 100);
+    }
+
+    return array;
+}
+
+
+//Funzione bubble sort
+function ordinaBubble(array) {
+    let lArr = array.length-1;
+    while (lArr > 0) {
+        for (let i = 0; i < lArr; i++) {
+            if (array[i] > array[i + 1]) {
+                let nTemp = array[i];
+                array[i] = array[i + 1];
+                array[i + 1] = nTemp;
+            }
+        }
+        lArr--;
+    }
+}
+
+//Funzione insertion sort
+function ordinaInsert(array) {
+    for (let i = 1; i <= array.length; i++) {
+        let value = array[i];
+        let j = i - 1
+        while (j >= 0 && array[j] > value) {
+            array[j + 1] = array[j]
+            j--;
+            array[j + 1] = value;
+        }
+    }
+}
+
+//Funzione selection sort
+function ordinaSelect(array) {
+    for (let i = 0; i < array.length - 1; i++) {
+        let pos = i;
+        for (let j = i + 1; j < array.length; j++) {
+            if (array[j] < array[pos]) {
+                pos = j;
+            }
+        }
+        if (pos !== i) {
+            let tmp = array[i];
+            array[i] = array[pos];
+            array[pos] = tmp;
+        }
+    }
+}
+
+/* -----------------------------------------------------------------------------------  OTHER  ----------------------------------------------------------------------------------- */
+//Funzione per formattare un array
+function formattato(array) {
+    let nuovoArray = "";
+    for (let i = 0; i < array.length; i++) {
+        nuovoArray += array[i] + ", ";
+        if (i % 10 === 0 && i !== 0 && i !== array.length -1) {
+            nuovoArray += "\n";
+        }
+        if (i === array.length -1) {
+            nuovoArray += array[i];
+        }
+    }
+    return nuovoArray;
+}
+
+//Funzione per inserire gli array nell'html
+function htmlArray(array1, array2, array3) {
+    let div = document.getElementById("array");
+    let a1 = document.createElement("h3");
+    let a2 = document.createElement("h3");
+    let a3 = document.createElement("h3");
+
+    a1.innerText = 'Array 1:\n' + formattato(array1);
+    a2.innerText = 'Array 2:\n' + formattato(array2);
+    a3.innerText = 'Array finale:\n' + formattato(array3);
+    div.appendChild(a1);
+    div.appendChild(a2);
+    div.appendChild(a3);
+}
+
+
+/* ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
+//Chiamo le funzioni
+function init() {
+    ordinaBubble(array1)
+    ordinaInsert(array2);
+    ordinaSelect(array3);
+    htmlArray(array1, array2, array3);
+}
+
+window.addEventListener("DOMContentLoaded", init);
