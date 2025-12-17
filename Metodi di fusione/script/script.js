@@ -1,3 +1,5 @@
+const LUNGHEZZA_ARRAY = 20;
+
 let array1 = creaArray();
 let array2 = creaArray();
 let array3 = creaArray();
@@ -5,14 +7,9 @@ let array3 = creaArray();
 //Funzione per creare gli array
 function creaArray() {
     let array = [];
-    for (let i = 0; i < 20; i++) {
-        let x = Math.floor(Math.random() *100);
-        if (array.includes(x)) {
-            x++;
-        }
-        array.push(x);
+    for (let i = 0; i < LUNGHEZZA_ARRAY; i++) {
+        array[i] = Math.floor(Math.random() * 100);
     }
-
     return array;
 }
 
@@ -34,16 +31,18 @@ function ordinaBubble(array) {
 
 //Funzione insertion sort
 function ordinaInsert(array) {
-    for (let i = 1; i <= array.length; i++) {
-        let value = array[i];
-        let j = i - 1
-        while (j >= 0 && array[j] > value) {
-            array[j + 1] = array[j]
+    for (let i = 0; i < array.length; i++) {
+        let temp = array[i];
+        let j = i - 1;
+        while (j >= 0 && array[j] > temp) {
+            array[j+1] = array[j];
             j--;
-            array[j + 1] = value;
         }
+        array[j+1] = temp;
+
     }
 }
+
 
 //Funzione selection sort
 function ordinaSelect(array) {
