@@ -62,7 +62,9 @@ function ordinaSelect(array) {
     }
 }
 
+
 /* -----------------------------------------------------------------------------------  OTHER  ----------------------------------------------------------------------------------- */
+
 //Funzione per formattare un array
 function formattato(array) {
     let nuovoArray = "";
@@ -79,7 +81,6 @@ function formattato(array) {
     return nuovoArray;
 }
 
-
 //Funzione per inserire gli array nell'html
 function htmlArray(array1, array2, array3) {
     let div = document.getElementById("array");
@@ -94,7 +95,6 @@ function htmlArray(array1, array2, array3) {
     div.appendChild(a2);
     div.appendChild(a3);
 }
-
 
 /* ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
 
