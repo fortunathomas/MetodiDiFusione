@@ -81,9 +81,9 @@ function htmlArray(array1, array2, array3) {
     let a2 = document.createElement("h3");
     let a3 = document.createElement("h3");
 
-    a1.innerText = 'Array 1:\n' + formattato(array1);
-    a2.innerText = 'Array 2:\n' + formattato(array2);
-    a3.innerText = 'Array finale:\n' + formattato(array3);
+    a1.innerText = 'Array 1 (Bubble Sort):\n' + formattato(array1);
+    a2.innerText = 'Array 2 (Insertion Sort):\n' + formattato(array2);
+    a3.innerText = 'Array 3 (Selection Sort):\n' + formattato(array3);
     div.appendChild(a1);
     div.appendChild(a2);
     div.appendChild(a3);
