@@ -6,7 +6,11 @@ let array3 = creaArray();
 function creaArray() {
     let array = [];
     for (let i = 0; i < 20; i++) {
-        array[i] = Math.floor(Math.random() * 100);
+        let x = Math.floor(Math.random() *100);
+        if (array.includes(x)) {
+            x++;
+        }
+        array.push(x);
     }
 
     return array;
@@ -43,17 +47,18 @@ function ordinaInsert(array) {
 
 //Funzione selection sort
 function ordinaSelect(array) {
-    for (let i = 0; i < array.length - 1; i++) {
-        let pos = i;
-        for (let j = i + 1; j < array.length; j++) {
-            if (array[j] < array[pos]) {
-                pos = j;
+    for (let i = 0; i < array.length -1; i++) {
+        let minimo = i;
+        for (let j = i; j < array.length; j++) {
+            if (array[j] < array[minimo]) {
+                minimo = j;
             }
         }
-        if (pos !== i) {
-            let tmp = array[i];
-            array[i] = array[pos];
-            array[pos] = tmp;
+
+        if (minimo !== i) {
+            let temp = array[i];
+            array[i] = array[minimo];
+            array[minimo] = temp;
         }
     }
 }
@@ -63,16 +68,18 @@ function ordinaSelect(array) {
 function formattato(array) {
     let nuovoArray = "";
     for (let i = 0; i < array.length; i++) {
-        nuovoArray += array[i] + ", ";
-        if (i % 10 === 0 && i !== 0 && i !== array.length -1) {
-            nuovoArray += "\n";
-        }
-        if (i === array.length -1) {
+        if (i === array.length - 1) {
             nuovoArray += array[i];
+        } else {
+            nuovoArray += array[i] + ", ";
+        }
+        if (i % 10 === 0 && i !== 0) {
+            nuovoArray += "\n";
         }
     }
     return nuovoArray;
 }
+
 
 //Funzione per inserire gli array nell'html
 function htmlArray(array1, array2, array3) {
